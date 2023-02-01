@@ -26,7 +26,9 @@
 				<img src="{{ asset('/build/images/favicon.png') }}" class="img-logo mx-3" alt="Logo">
 			</a>
 
-			<a class="navbar-brand" href="#">WIKI-WILD</a>
+			<a class="navbar-brand titleNav" href="#">WIKI-WILD</a>
+
+
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -38,27 +40,24 @@
 						<a class="nav-link active" aria-current="page" href="#"></a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="{{ path('app_documentation_index') }}">Documentation</a>
+						<a class="nav-link textSize" href="{{ path('app_documentation_index') }}">Documentation</a>
+
+						{% if app.user %}
+						</li>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link textSize" href="{{ path('app_logout') }}">disconnect</a>
 
 
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Pricing</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link disabled">Disabled</a>
-					</li>
-				</ul>
-			</div>
+				{% endif %}
+
+			</ul>
 		</div>
-	</nav>
+	</div>
+</html></nav>{% block body %}
 
 
-	{% block body %}
+<body>
 
-
-		<body>
-
-		{% endblock %}
-	</body>
-</html></html>
+{% endblock %}</body></html></html>
