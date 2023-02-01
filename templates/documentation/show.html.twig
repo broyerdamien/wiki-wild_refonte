@@ -1,34 +1,53 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Documentation{% endblock %}
+{% block title %}Documentation
+{% endblock %}
 
 {% block body %}
-    <h1>Documentation</h1>
+	<h1 class="text-center my-5">{{ documentation.author.lastname }}
+		{{ documentation.author.firstname }}:</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ documentation.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ documentation.title }}</td>
-            </tr>
-            <tr>
-                <th>Content</th>
-                <td>{{ documentation.content }}</td>
-            </tr>
-            <tr>
-                <th>Poster</th>
-                <td>{{ documentation.poster }}</td>
-            </tr>
-        </tbody>
-    </table>
 
-    <a href="{{ path('app_documentation_index') }}">back to list</a>
+	<div class="justify-content-center mx-2">
+		<div class="card mb-3 mx-auto text-break border border-2 border-dark " style=" max-width: 740px;">
 
-    <a href="{{ path('app_documentation_edit', {'id': documentation.id}) }}">edit</a>
 
-    {{ include('documentation/_delete_form.html.twig') }}
-{% endblock %}
+			<div class="row g-0">
+				<div class="col-md-4">
+					<img src="{{ asset('/build/images/'~ documentation.poster) }}" class="img-fluid rounded-start" alt="...">
+
+				</div>
+				<div class="col-md-8">
+					<div class="card-body">
+						<h5 class="card-title">{{ documentation.title }}</h5>
+
+						<p class="card-text">{{ documentation.content }}</p>
+
+
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="d-flex flex-column  align-items-center ">
+
+
+		<a href="{{ path('app_documentation_index') }}">
+
+			<button class="buttonGlobal rounded my-2">
+				back to list
+			</button>
+		</a>
+		<a href="{{ path('app_documentation_edit', {'id': documentation.id}) }}">
+
+			<button class="buttonGlobal rounded my-2">
+
+				edit
+			</button>
+		</a>
+
+
+		{{ include('documentation/_delete_form.html.twig') }}
+	</div>
+
+</div>{% endblock %}
