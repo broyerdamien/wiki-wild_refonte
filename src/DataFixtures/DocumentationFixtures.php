@@ -20,7 +20,7 @@ class DocumentationFixtures extends Fixture implements DependentFixtureInterface
             $documenation = new Documentation();
             $documenation->setTitle($faker->realText(40, 2));
             $documenation->setContent($faker->realTextBetween(160, 500, 2));
-            $documenation->setPoster('fixture1.jpg');
+            $documenation->setPoster('fixture3.jpg');
             $documenation->setAuthor($this->getReference('author_' . $faker->numberBetween(0, 7)));
             $manager->persist($documenation);
             $this->addReference('documentation_' . $i, $documenation);
