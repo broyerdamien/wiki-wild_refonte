@@ -43,13 +43,16 @@ class Documentation
     #[Vich\UploadableField(mapping: 'profile_file', fileNameProperty: 'poster')]
     #[Assert\File(
         maxSize: '1M',
-        mimeTypes: ['image/jpg', 'image/png'],
+        mimeTypes: ['image/jpeg', 'image/png'],
     )]
 
     private ?File $profilePictureFile = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?DateTimeInterface $updatedAt = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $isUploadedPicture = null;
 
     public function __construct()
     {
@@ -78,6 +81,7 @@ class Documentation
         $this->profilePictureFile = $image;
         if ($image) {
             $this->updatedAt = new DateTime('now');
+            $this->isUploadedPicture = true;
         }
         return $this;
     }
@@ -170,6 +174,18 @@ class Documentation
                 $favori->setDocumentation(null);
             }
         }
+
+        return $this;
+    }
+
+    public function isIsUploadedPicture(): ?bool
+    {
+        return $this->isUploadedPicture;
+    }
+
+    public function setIsUploadedPicture(?bool $isUploadedPicture): self
+    {
+        $this->isUploadedPicture = $isUploadedPicture;
 
         return $this;
     }

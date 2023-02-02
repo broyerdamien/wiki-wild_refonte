@@ -21,6 +21,11 @@ class DocumentationType extends AbstractType
 
 
             ->add('profilePictureFile', VichFileType::class, [
+
+                'attr' => [
+                    'class' => 'form-control rounded-5 border-dark text-center ',
+                    'placeholder' => 'Name',
+                ],
                 'required'      => false,
                 'allow_delete'  => true, // not mandatory, default is true
                 'download_uri' => true, // not mandatory, default is true

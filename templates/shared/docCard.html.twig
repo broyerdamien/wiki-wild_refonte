@@ -1,9 +1,12 @@
 <div class="card col-xl-4 col-lg-4 col-md-6 col-sm-8 mx-5 my-5 cardDoc text-break border border-2 border-dark " style="width: 18rem;">
+	<div class='imgCardCatalogue img-fluid'>
 
-
-	<img src="{{ asset('/build/images/'~ documentation.poster) }}" class="card-img-top imgCardDimension" alt="...">
-
-
+		{% if documentation.isUploadedPicture != true %}
+			<img src="{{ asset('/build/images/'~ documentation.poster) }}" class="card-img-top imgCardDimension" alt="...">
+		{% else %}
+			<img src=" {{ vich_uploader_asset(documentation) }}" class="card-img-top imgCardDimension" alt="...">
+		{% endif %}
+	</div>
 	<div class="card-body">
 		<h5>
 			{{ documentation.author.lastname }}
@@ -12,7 +15,7 @@
 
 		<h5 class="card-title">{{ documentation.title }}</h5>
 		<p class="card-text">
-			{{ documentation.content|u.truncate(200, '...')|raw}}</p>
+			{{ documentation.content|u.truncate(198, '...')|raw}}</p>
 
 		<a href="{{ path('app_documentation_show', {'id': documentation.id}) }}">
 			<button class="buttonGlobal rounded">Go somewhere
