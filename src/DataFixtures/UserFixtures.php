@@ -24,7 +24,7 @@ class UserFixtures extends Fixture
         $user->setEmail('test@gmail.com');
         $user->setLastname('Broyer');
         $user->setFirstname('Damien');
-        $user->setRoles(['ROLE_USER']);
+        $user->setRoles(['ROLE_ADMIN']);
         $hashedPassword = $this->passwordHasher->hashPassword(
             $user,
             'test2601'
