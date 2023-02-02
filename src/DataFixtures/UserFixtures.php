@@ -19,6 +19,19 @@ class UserFixtures extends Fixture
     }
     public function load(ObjectManager $manager): void
     {
+
+        $user = new User();
+        $user->setEmail('test@gmail.com');
+        $user->setLastname('Broyer');
+        $user->setFirstname('Damien');
+        $user->setRoles(['ROLE_USER']);
+        $hashedPassword = $this->passwordHasher->hashPassword(
+            $user,
+            'test2601'
+        );
+        $user->setPassword($hashedPassword);
+        $manager->persist($user);
+
         $faker = Factory::create();
         for ($i = 0; $i < 8; $i++) {
             $author = new User();

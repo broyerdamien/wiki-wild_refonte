@@ -7,10 +7,43 @@
 	<div class='container'>
 		<div class='row col-12 mt-5 justify-content-center'>
 
-			<div class=' col-xs-12 col-md-8 col-lg-6 col-xl-6 mt-5  text-center'>
+			<div class=' col-xs-12 col-md-8 col-lg-6 col-xl-6 mt-5   text-center'>
 
 
 				<h1 class='homeH1 mt-5 '>All your documentation in one click</h1>
+
+				{% if app.user %}
+					<p class="fw-bold fs-1">Welcome
+						{{ app.user.firstname }}
+						{{ app.user.lastname }}</p>
+				{% else %}
+
+
+					{% if error is defined and error %}
+
+						<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+					{% endif %}
+					<div class='col-12 my-5 shadow mx-auto'>
+
+
+						<form class=' col-6 mx-auto bg-light' action="{{ path('app_homes') }}" method="post">
+
+
+							<label for="username">Email:</label><br>
+							<input type="text" id="username" name="_username" class='rounded bg-light'>
+
+
+							<label for="password">Password:</label><br>
+
+							<input type="password" id="password" name="_password" class='rounded form-doc'>
+							<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+							<button class='buttonGlobal rounded my-4' type="submit">login</button>
+
+						</form>
+					</div>
+				{% endif %}
+
 			</div>
 			<div class='homeImg col-xs-12 col-md-8 col-lg-6 col-xl-6'>
 
@@ -20,6 +53,4 @@
 
 		</div>
 	</div>
-
-
 {% endblock %}

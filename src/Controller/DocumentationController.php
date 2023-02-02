@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Entity\Documentation;
 use App\Form\DocumentationType;
 use App\Repository\DocumentationRepository;
@@ -24,11 +25,14 @@ class DocumentationController extends AbstractController
     #[Route('/new', name: 'app_documentation_new', methods: ['GET', 'POST'])]
     public function new(Request $request, DocumentationRepository $documentationRepository): Response
     {
+        /** @var \App\Entity\User $user */
+        $user = $this->getUser();
         $documentation = new Documentation();
         $form = $this->createForm(DocumentationType::class, $documentation);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $documentation->setAuthor($user);
             $documentationRepository->save($documentation, true);
 
             return $this->redirectToRoute('app_documentation_index', [], Response::HTTP_SEE_OTHER);
@@ -69,7 +73,7 @@ class DocumentationController extends AbstractController
     #[Route('/{id}', name: 'app_documentation_delete', methods: ['POST'])]
     public function delete(Request $request, Documentation $documentation, DocumentationRepository $documentationRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$documentation->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $documentation->getId(), $request->request->get('_token'))) {
             $documentationRepository->remove($documentation, true);
         }
 
