@@ -17,13 +17,13 @@ class DocumentationFixtures extends Fixture implements DependentFixtureInterface
         $faker = Factory::create();
         for ($i = 0; $i < 40; $i++) {
 
-            $documenation = new Documentation();
-            $documenation->setTitle($faker->realText(40, 2));
-            $documenation->setContent($faker->realTextBetween(160, 500, 2));
-            $documenation->setPoster('fixture3.jpg');
-            $documenation->setAuthor($this->getReference('author_' . $faker->numberBetween(0, 7)));
-            $manager->persist($documenation);
-            $this->addReference('documentation_' . $i, $documenation);
+            $documentation = new Documentation();
+            $documentation->setTitle($faker->realText(40, 2));
+            $documentation->setContent($faker->realTextBetween(160, 500, 2));
+            $documentation->setPoster('fixture3.jpg');
+            $documentation->setAuthor($this->getReference('author_' . $faker->numberBetween(0, 7)));
+            $manager->persist($documentation);
+            $this->addReference('documentation_' . $i, $documentation);
         }
 
         $manager->flush();
