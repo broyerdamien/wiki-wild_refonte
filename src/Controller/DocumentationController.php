@@ -33,6 +33,7 @@ class DocumentationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $documentation->setAuthor($user);
+
             $documentationRepository->save($documentation, true);
 
             return $this->redirectToRoute('app_documentation_index', [], Response::HTTP_SEE_OTHER);
