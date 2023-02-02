@@ -1,0 +1,46 @@
+.homeH1 {
+    margin: auto
+}
+
+.cardDoc {
+
+    height: 620px;
+
+    &:hover {
+        box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.25);
+        transition: box-shadow 0.3s ease-in-out;
+    }
+}
+
+.buttonGlobal {
+
+    background-color: $violet;
+    color: rgb(255, 255, 255);
+    width: 180px;
+    height: 40px;
+    border-width: 2px;
+    text-align: center;
+
+}
+
+body {
+
+    background-color: white;
+
+}
+
+.form-doc {
+    background-color: white;
+
+    border-radius: 25px;
+}
+
+.titleNav {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.textSize {
+
+    font-size: 1.5rem;
+}

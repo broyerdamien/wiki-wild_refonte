@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Documentation index
+{% endblock %}
+
+{% block body %}
+	<h1 class='text-center my-5'>Documentation</h1>
+
+
+	<div class="container text-center">
+		<div class="row mb-5 justify-content-center">
+			{% if app.user %}
+
+
+				<a href="{{ path('app_documentation_new') }}">
+
+
+					<button class="buttonGlobal rounded my-2">
+						Create
+					</button>
+				</a>
+			{% endif %}
+
+
+			{% for documentation in documentations %}
+
+
+				{% include "shared/docCard.html.twig" %}
+				<!--<a href="{{ path('app_documentation_show', {'id': documentation.id}) }}">show</a>
+																																<a href="{{ path('app_documentation_edit', {'id': documentation.id}) }}">edit</a> -->
+
+
+			{% endfor %}
+
+		</div>
+	</div>
+
+	<a href="{{ path('app_documentation_new') }}">Create new</a>
+
+{% endblock %}

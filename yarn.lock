@@ -2,3 +2,7 @@
 # yarn lockfile v1
 
 
+Installing dependencies from lock file (including require-dev)
+Verifying lock file contents can be installed on current platform.
+Package operations: 0 installs, 8 updates, 8 removals
+  - Removing vich/uploader-bundle (2.0.1)
