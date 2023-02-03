@@ -1,0 +1,25 @@
+$color-mode-type: data;
+
+
+@include color-mode(light) {
+
+    body {
+        background-color: #fcfcfc;
+    }
+
+}
+
+@include color-mode(dark) {
+
+    body {
+        background-color: black;
+    }
+
+    nav {
+
+        background-color: black;
+        color: #fcfcfc;
+
+    }
+
+}
